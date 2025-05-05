@@ -10,8 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "@rails/actioncable": "^8.0.200",
+    "@types/rails__actioncable": "^6.1.11",
+    "graphql": "^16.11.0",
+    "graphql-ruby-client": "^1.14.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router": "^7.5.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
