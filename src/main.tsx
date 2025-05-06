@@ -9,12 +9,16 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Room } from "./Room.tsx";
+import { Workspace } from "./Workspace.tsx";
 import { createConsumer } from "@rails/actioncable";
 import ActionCableLink from "graphql-ruby-client/subscriptions/ActionCableLink";
 
+// Apollo Link
 // https://www.apollographql.com/docs/react/api/link/apollo-link-http#httplink-constructor-options
-const cable = createConsumer();
+// Graphql RubyとActionCableが提供するjsのpackageを使ったapolloのinit
+// https://graphql-ruby.org/javascript_client/apollo_subscriptions#apollo-link--actioncable
+
+const cable = createConsumer('ws://localhost:3000/cable');
 
 const primaryLink = new HttpLink({
   uri: "http://localhost:3000/graphql",
@@ -45,8 +49,7 @@ createRoot(document.getElementById("root")!).render(
     <ApolloProvider client={client}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/room" element={<Room />} />
+          <Route path="/" element={<Workspace />} />
         </Routes>
       </BrowserRouter>
     </ApolloProvider>
